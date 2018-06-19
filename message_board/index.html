@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>时光机——致未来的我们</title>
+<link rel="icon" href="css/img/nebulasx60.png">
+<link rel="stylesheet" href="plugin/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+<link href="plugin/datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+<link rel='stylesheet prefetch' href='css/slick.css'>
+<link rel='stylesheet prefetch' href='css/slick-theme.css'>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/index_style.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+
+
+
+<div class="header" id="demo">
+	
+  <!--首页内容-->  
+  <header>
+    <h1 class="text-center">时光机——致未来的我们</h1>
+  </header> 
+	<div class="topcn" style="font:20px/18px 'microsoft yahei';color:#ffffff;text-align:center;">
+		
+  </div>
+  
+  <!-- 搜索 -->
+  <div class="search" onclick="time.searchText()">
+    <span>搜索留言</span>
+  </div>
+  <div class="search home" onclick="time.conInit()">
+    <span>返回首页</span>
+  </div>
+  <div class="search add" onclick="time.transmitTime({name:'',content:'',date:'',password:''})">
+    <span>发送留言</span>
+  </div>
+    
+  <div class="canvaszz"> </div>
+  <canvas id="canvas"></canvas> 
+</div>
+
+
+
+
+<!--用来解决视频右键菜单，用于视频上面的遮罩层 START-->
+<div class="videozz"></div>
+<!--用来解决视频右键菜单，用于视频上面的遮罩层 END-->
+
+<!--音乐 START-->
+<audio controls="true" autoplay="autoplay" class="audio" loop>
+      <source src="css/赵海洋 - 夜空的寂静 (钢琴曲).mp3" type="audio/mp3"> 
+      <source src="css/Music.ogg" type="audio/ogg"> 
+      <source src="css/Music.aac" type="audio/mp4"> 
+</audio>
+<!--音乐 END-->
+<script src="js/jquery-3.3.1.min.js" type="text/javascript"></script>
+<script src="plugin/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+
+
+<script src="js/universe.js"></script>
+<script src='js/slick.min.js'></script>
+<script src="http://www.4fbbs.cn/nas/js/nebPay.js"></script>
+<script src="plugin/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+<script src="plugin/datepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script src="js/index.js"></script>
+
+</body>
+</html>
