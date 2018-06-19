@@ -57,8 +57,7 @@ a:hover,a:focus{color:#74777b;text-decoration: none;}
 
 .htmleaf-container{
 	margin: 0 auto;
-	max-height: 500px;
-	overflow-y: auto;
+
 }
 
 .bgcolor-1 { background: #f0efee; }

@@ -1,15 +1,9 @@
 var subData;
-var search_name;
+var search_name,search_password;
 var NebPay = require("nebpay"); //https://github.com/nebulasio/nebPay
 var nebpay = new NebPay();
-
-//test
-//var dappAddress = "n1q4MdzTHiodMDDmauFm49aoHA5RWDh9FKr";
-//var txHash = "24f20fa1d6ad852e6647bcba4d1e01713cd8728c896a696801fb54d2b8a1ae58";
-
 var dappAddress = "n1yjJxgPEDkFR1Yw1P5Sjnq8TVLu4whnDfV";
 var txHash = "c39ee636d618386ebf5cde5fe9493f9643a9a50b57e3450428ddb6ac6a01b46f";
-
 var to = dappAddress;
 var value = "0";
 var time={
@@ -99,9 +93,8 @@ var time={
         $("#datepicker").datetimepicker({
           autoclose:true,
           language:"zh-CN",
-          startView: 2, //开始视图层，为月视图层
-          maxView:1, //最大视图层，为年视图层
-          minView:3, //最小视图层，为月视图层
+          //startView: 2, //开始视图层，为月视图层
+          minView:2//最小视图层，为月视图层
         });
     },
     preview:function(){
@@ -188,8 +181,11 @@ var time={
       }else{
         // 上传搜索框内容
         search_name=$("input[name=search_name]").val();
-        var search_password=$("input[name=search_password]").val();
+        search_password=$("input[name=search_password]").val();
         console.log(search_name+","+search_password);
+        $(".topcn div").remove();
+        let _text="<div style='line-height:200px;color:#AD5F5D'>您的时光机正在跨越千山万水飞奔而来</div><div style='font-size:40px'><i class='fa fa-spin fa-spinner'></i></div>";
+        $(".topcn").append(_text);
         var callFunction = "get";
         var callArgs = "[\""+search_name+"\",\""+search_password+"\"]";
         nebpay.simulateCall(to, value, callFunction, callArgs, {
@@ -203,22 +199,26 @@ var time={
     },
     searchResult:function(obj){
       var _data=JSON.parse(obj);
-      console.log(obj);
-      console.log(_data);
+      //console.log(obj);
+      //console.log(_data);
       $(".topcn div").remove();
-      var _text='<div class="htmleaf-container"><div class="slide-container">';
-      $.each(_data,function(index,elem){
-        console.log(elem);
-        _text+='<div class="wrapper">'+
-        '<div class="clash-card barbarian">'+
-          '<div class="clash-card__level clash-card__level--barbarian">亲爱的 '+search_name+' 你好：</div>'+  
-          '<div class="clash-card__unit-description">'+ elem.content +'</div>'+ 
-          '<div class="clash-card__level clash-card__level--barbarian text-right">留言到达日期：'+elem.acceptdate+'</div>'+ 
-        '</div>'+ 
-      '</div>'; 
-      })
-
-      _text+='</div></div>';
+      if(_data.length == 0){
+        var _text="<div style='line-height:200px;color:#7ECEC6'>抱歉，没有检索到您的留言，请先传送您的留言！</div>"
+      }else{
+        var _text='<div class="htmleaf-container"><div class="slide-container">';
+        $.each(_data,function(index,elem){
+          //console.log(elem);
+          _text+='<div class="wrapper">'+
+          '<div class="clash-card barbarian">'+
+            '<div class="clash-card__level clash-card__level--barbarian">亲爱的 '+search_name+' 你好：</div>'+  
+            '<div class="clash-card__unit-description">'+ elem.content +'</div>'+ 
+            '<div class="clash-card__level clash-card__level--barbarian text-right">留言到达日期：'+elem.acceptdate+'</div>'+ 
+          '</div>'+ 
+        '</div>'; 
+        })
+  
+        _text+='</div></div>';
+      }
       
       $(".topcn").append(_text);
 
